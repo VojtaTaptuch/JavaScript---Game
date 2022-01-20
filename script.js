@@ -21,8 +21,8 @@ let tailLength = 2;
 let appleX = 5;
 let appleY = 5;
 //vstup z kláves
-let inputsXVelocity = 0;
-let inputsYVelocity = 0;
+let keysXVelocity = 0;
+let keysYVelocity = 0;
 //pohyb hada
 let xVelocity = 0;
 let yVelocity = 0;
@@ -32,8 +32,8 @@ let score = 0;
 
 //loop hry
 function drawGame() {
-  xVelocity = inputsXVelocity;
-  yVelocity = inputsYVelocity;
+  xVelocity = keysXVelocity;
+  yVelocity = keysYVelocity;
 //konec hry
   changeSnakePosition();
   let result = isGameOver();
@@ -145,27 +145,27 @@ document.body.addEventListener("keydown", keyDown);
 //vstupy na pohyb hada, šipky
 function keyDown(event) {
   if (event.keyCode == 38) {
-    if (inputsYVelocity == 1) return;
-    inputsYVelocity = -1;
-    inputsXVelocity = 0;
+    if (keysYVelocity == 1) return;
+    keysYVelocity = -1;
+    keysXVelocity = 0;
   }
 
   if (event.keyCode == 40) {
-    if (inputsYVelocity == -1) return;
-    inputsYVelocity = 1;
-    inputsXVelocity = 0;
+    if (keysYVelocity == -1) return;
+    keysYVelocity = 1;
+    keysXVelocity = 0;
   }
 
   if (event.keyCode == 37) {
-    if (inputsXVelocity == 1) return;
-    inputsYVelocity = 0;
-    inputsXVelocity = -1;
+    if (keysXVelocity == 1) return;
+    keysYVelocity = 0;
+    keysXVelocity = -1;
   }
 
   if (event.keyCode == 39) {
-    if (inputsXVelocity == -1) return;
-    inputsYVelocity = 0;
-    inputsXVelocity = 1;
+    if (keysXVelocity == -1) return;
+    keysYVelocity = 0;
+    keysXVelocity = 1;
   }
 }
 //vyvolání hry
