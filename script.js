@@ -168,5 +168,5 @@ function keyDown(event) {
     inputsXVelocity = 1;
   }
 }
-
+//vyvolání hry
 drawGame();
