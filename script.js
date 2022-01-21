@@ -124,7 +124,7 @@ function drawSnake() {
 //pohyb hada
 function changeSnakePosition() {
   hlavaX = hlavaX + xVelocity;
-  headY = hlavaY + yVelocity;
+  hlavaY = hlavaY + yVelocity;
 }
 
 function drawApple() {
