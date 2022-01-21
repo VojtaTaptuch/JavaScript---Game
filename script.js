@@ -13,8 +13,8 @@ let speed = 7;
 let tileCount = 20;
 let tileSize = canvas.width / tileCount - 2;
 //basic pozice hlavy + další části
-let hlavaX = 10;
-let hlavaY = 10;
+let headX = 10;
+let headY = 10;
 const snakeBlocks = [];
 let tailLength = 2;
 //basic pozice jablka
@@ -67,19 +67,19 @@ function isGameOver() {
   }
 
   //kolize stěn
-  if (hlavaX < 0) {
+  if (headX < 0) {
     gameOver = true;
-  } else if (hlavaX === tileCount) {
+  } else if (headX === tileCount) {
     gameOver = true;
-  } else if (hlavaY < 0) {
+  } else if (headY < 0) {
     gameOver = true;
-  } else if (hlavaY === tileCount) {
+  } else if (headY === tileCount) {
     gameOver = true;
   }
   //srážka s ocasem
   for (let i = 0; i < snakeBlocks.length; i++) {
     let part = snakeBlocks[i];
-    if (part.x === hlavaX && part.y === hlavaY) {
+    if (part.x === headX && part.y === headY) {
       gameOver = true;
       break;
     }
@@ -113,18 +113,18 @@ function drawSnake() {
     ctx.fillRect(part.x * tileCount, part.y * tileCount, tileSize, tileSize);
   }
   //pohyb dalších částí hada
-  snakeBlocks.push(new SnakePart(hlavaX, hlavaY));
+  snakeBlocks.push(new SnakePart(headX, headY));
   while (snakeBlocks.length > tailLength) {
     snakeBlocks.shift();
   }
 
   ctx.fillStyle = "grey";
-  ctx.fillRect(hlavaX * tileCount, hlavaY * tileCount, tileSize, tileSize);
+  ctx.fillRect(headX * tileCount, headY * tileCount, tileSize, tileSize);
 }
 //pohyb hada
 function changeSnakePosition() {
-  hlavaX = hlavaX + xVelocity;
-  hlavaY = hlavaY + yVelocity;
+  headX = headX + xVelocity;
+  headY = headY + yVelocity;
 }
 
 function drawApple() {
@@ -133,7 +133,7 @@ function drawApple() {
 }
 //kolize, snězení jablka a zaroveň i jeho nové vykreslení
 function checkAppleCollision() {
-  if (appleX === hlavaX && appleY == hlavaY) {
+  if (appleX === headX && appleY == headY) {
     appleX = Math.floor(Math.random() * tileCount);
     appleY = Math.floor(Math.random() * tileCount);
     tailLength++;
